@@ -1,0 +1,44 @@
+pipeline{
+  agent any
+  
+      parameters{
+      string(name: 'container_name', dafaultValue: 'prueba hola', description: 'proyecto php')
+      string(name: 'image_name', dafaultValue: 'hello-php', description: 'hello-php')
+      string(name: 'tag_image', defaultValue: 'hello-php', description: 'hello-php')
+      string(name: 'container_port', defaultValue: 80, description: 'Puerto que usa el contenedor')
+      }
+      
+         stage('test') {
+      steps {
+        
+          sh 'npm run test'
+        
+      }
+    }
+
+    stage('build') {
+      steps {
+     
+          script {
+            try {
+              sh 'docker stop ${container_name}'
+              sh 'docker rm ${container_name}'
+              sh 'docker rmi ${image_name}:${tag_image}'
+            } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+            }
+    
+          sh 'npm run build'
+          sh 'docker build -t ${image_name}:${tag_image} .'
+        }
+      }
+    }
+
+    stage('deploy') {
+      steps {
+        sh 'docker run -d -p ${container_port}:80 --name ${container_name} ${image_name}:${tag_image}'
+      }
+    }
+  }
+
+}
