@@ -2,7 +2,7 @@ pipeline{
   agent any
   
       parameters{
-      string(name: 'container_name', dafaultValue: 'prueba hola', description: 'proyecto php')
+      string(name: 'container_name', dafaultValue: 'bold_robinson', description: 'proyecto php')
       string(name: 'image_name', dafaultValue: 'hello-php', description: 'hello-php')
       string(name: 'tag_image', defaultValue: 'hello-php', description: 'hello-php')
       string(name: 'container_port', defaultValue: 80, description: 'Puerto que usa el contenedor')
