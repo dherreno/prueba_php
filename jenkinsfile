@@ -23,7 +23,7 @@ pipeline {
 
     stage('deploy') {
       steps {
-        sh 'docker run -p 5009:80 -d -v D:\Usuarios\analista.tic3\Desktop\docker-php/src:/var/www/html/  hello-php --privileged '
+        sh 'docker run -p 5009:80 -d -v D:\\\\Usuarios\\\\analista.tic3\\\\Desktop\\\\docker-php/src:/var/www/html/  hello-php --privileged '
       }
     }
   }
