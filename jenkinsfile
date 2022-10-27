@@ -1,26 +1,29 @@
-pipeline{
+pipeline {
   agent any
+
   
-      parameters{
+  stages {
+    stage('install') {
+      steps {
+        echo 'install'
+        }
       }
-      
-         stage('test') {
+
+    stage('test') {
       steps {
         echo 'test'
+        }
       }
-    }
 
     stage('build') {
       steps {
-     
-          script {
-            echo 'build'
+        echo 'build'
+        }
       }
-    }
 
     stage('deploy') {
       steps {
-       echo 'deploy'
+        echo 'deploy'
       }
     }
   }
