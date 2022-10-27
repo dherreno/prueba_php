@@ -4,6 +4,12 @@ pipeline {
   
   stages {
     stage('install') {
+      agent { 
+        docker {
+           label "docker" 
+            image "hello-php"
+           }
+           }
       steps {
         sh 'docker run -v /var/run/docker.sock:/var/run/docker.sock'
         }
