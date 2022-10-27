@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('install') {
       steps {
-        sh 'docker run -v /var/run/docker.sock:/var/run/docker.sock'
+        echo install
         }
       }
 
