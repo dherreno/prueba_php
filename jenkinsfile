@@ -1,7 +1,7 @@
 pipeline {
   agent {
-    label 'docker'
-  }
+        docker { image 'hello-php:latest' }
+    }
 
   
   stages {
